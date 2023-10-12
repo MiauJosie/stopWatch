@@ -4,11 +4,9 @@ let second = 0;
 let millisecond = 0;
 let started = false;
 let cron;
-
 document.getElementById("startpause").onclick = () => switchButton();
 document.getElementById("reset").onclick = () => reset();
-
-function switchButton () {
+function switchButton() {
     if (started === false) {
         startCron();
         started = true;
@@ -19,16 +17,13 @@ function switchButton () {
         document.getElementById("startpause").innerText = "START";
     }
 }
-
 function startCron() {
     stopCron();
-    cron = setInterval(() => { timer() }, 10);
+    cron = setInterval(() => { timer(); }, 10);
 }
-
 function stopCron() {
     clearInterval(cron);
 }
-
 function reset() {
     hour = 0;
     minute = 0;
@@ -38,9 +33,8 @@ function reset() {
     document.getElementById("minute").innerText = "00";
     document.getElementById("second").innerText = "00";
     document.getElementById("millisecond").innerText = "00";
-    started ? switchButton() : reset()
+    started ? switchButton() : reset();
 }
-
 function timer() {
     if ((millisecond += 1) == 100) {
         millisecond = 0;
@@ -59,7 +53,6 @@ function timer() {
     document.getElementById('second').innerText = returnInput(second);
     document.getElementById('millisecond').innerText = returnInput(millisecond);
 }
-
 function returnInput(i) {
     return i >= 10 ? i : `0${i}`;
 }
